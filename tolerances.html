@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>±0.005 mm on a CNC Part: What It Means, How It Is Measured, What the Report Shows</title>
+<meta name="description" content="A practical note on CNC tolerance: what ±0.005 mm actually constrains, where the error comes from, how the dimension is measured, what a first-article report should contain, and when ISO 2768-m is the better call.">
+<link rel="canonical" href="https://chxmetal.github.io/tolerances.html">
+<style>
+body{font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.65;color:#1a2233;max-width:860px;margin:0 auto;padding:24px 20px 64px;background:#fff}
+h1{font-size:1.7em;margin:.2em 0 .3em;color:#0f2a4a}
+h2{font-size:1.12em;color:#0f2a4a;border-left:4px solid #1c6dd0;padding-left:10px;margin-top:2em}
+h3{font-size:1em;color:#0f2a4a;margin-top:1.4em}
+.meta{color:#5a6a80;font-size:.95em}
+footer{margin-top:3em;padding-top:1.2em;border-top:1px solid #dde4ee;color:#5a6a80;font-size:.92em}
+a{color:#1c6dd0}
+.box{background:#f4f8fd;border:1px solid #d8e4f4;border-radius:8px;padding:14px 18px;margin:1.2em 0}
+.kv{margin:.35em 0}
+table{width:100%;border-collapse:collapse;font-size:.94em;margin:1.1em 0}
+th,td{border:1px solid #dde4ee;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f0f5fb;color:#0f2a4a}
+nav{font-size:.92em;margin-bottom:1.4em}
+nav a{margin-right:14px}
+</style>
+</head>
+<body>
+<nav><a href="index.html">FAQ index</a><a href="swiss-type.html">Swiss-type turning</a><a href="https://chxmetal.com/en/quality-control/">Quality &amp; inspection</a></nav>
+<h1>±0.005 mm on a CNC part: what it means, how it is measured, what the report shows</h1>
+<p class="meta">Notes from <strong>CHX Precision Metal</strong>, Shenzhen — standard production tolerance ±0.005 mm, ISO 9001:2015 (NOA1994293) and ISO 14001:2015 (05126E02909R253).</p>
+
+<div class="box">
+<p style="margin:0"><strong>Short answer:</strong> ±0.005 mm means the finished dimension may sit 5 micrometres either side of nominal. That is roughly a twelfth of the thickness of a human hair, and it cannot be verified with a caliper. A shop claiming it must be able to name the instrument, the fixture and the temperature it was measured at — otherwise the number is a marketing figure, not a specification.</p>
+</div>
+
+<h2>What ±0.005 mm actually constrains</h2>
+<p>A tolerance only means something on a specific dimension. "We hold ±0.005 mm" as a blanket statement about a shop is close to meaningless; what matters is which dimensions on which part, measured how. A Ø6 mm bore in aluminium held to ±0.005 mm is a routine production feature. The same tolerance on a 200 mm overall length in the same material is a different problem, because thermal expansion alone moves the number: aluminium grows about 23 µm per metre per °C, so a 200 mm part that is 5 °C warmer than the inspection room reads 23 µm long — four times the tolerance.</p>
+<p>This is why a competent shop asks three questions before accepting a tight tolerance: which dimension, what material, and what is the reference temperature.</p>
+
+<h2>Where the error comes from</h2>
+<table>
+<tr><th>Source</th><th>Typical magnitude</th><th>What controls it</th></tr>
+<tr><td>Machine positioning</td><td>1–5 µm on a healthy machine, more if the machine is worn</td><td>Ball-screw condition, thermal compensation, calibration schedule</td></tr>
+<tr><td>Tool wear</td><td>Grows through a run; can reach 10–20 µm on a long batch</td><td>Tool life management, in-process gauging, offsets written back</td></tr>
+<tr><td>Fixture and clamping</td><td>Thin walls can move 20 µm or more when released</td><td>Fixture design, low-pressure clamping, stress relief</td></tr>
+<tr><td>Cutting force deflection</td><td>Large on slender parts, small on rigid ones</td><td>Support at the cut (guide bushing, tailstock), lighter passes</td></tr>
+<tr><td>Heat from the cut</td><td>A few µm locally, more in a long cycle</td><td>Coolant, warm-up routine, stable shop temperature</td></tr>
+<tr><td>Measurement itself</td><td>2–10 µm depending on instrument and operator</td><td>Correct instrument, calibration, defined measuring points</td></tr>
+</table>
+<p>Note the last row. If the measurement uncertainty is a third of the tolerance, you cannot separate a good part from a marginal one. That is why the measurement method belongs in the drawing notes, not in the supplier's head.</p>
+
+<h2>How the dimension is measured</h2>
+<ul>
+<li><strong>CMM (coordinate measuring machine)</strong> — the reference instrument for position, form and orientation: true position, concentricity, perpendicularity, flatness. A CMM report states the probe diameter, the alignment and the fitting method, because the same point cloud gives slightly different results depending on how the feature is fitted.</li>
+<li><strong>Vision measurement</strong> — fast for 2D profiles, small features and edges, with magnification high enough to see a 0.01 mm chamfer.</li>
+<li><strong>Air gauge (pneumatic comparator)</strong> — for bores and shafts produced in volume. Reads to sub-micron, no contact, and is quick enough to check every piece if the geometry allows.</li>
+<li><strong>Micrometer and bore gauge</strong> — fine for diameters when the operator is trained and the instrument is calibrated; a caliper is not, at this tolerance.</li>
+<li><strong>Surface roughness tester</strong> — reports Ra, and on request Rz and Rmax. Ra alone can hide a profile that will leak.</li>
+</ul>
+<p>For a 0.005 mm tolerance, the instrument's resolution has to be at least ten times finer than the tolerance, and its calibration has to be current. A shop that cannot produce a calibration certificate for the instrument it used has not measured anything you can rely on.</p>
+
+<h2>What a first-article report should contain</h2>
+<ol>
+<li>Every dimension on the drawing that carries a tolerance, with the nominal, the limits and the measured value — not just "OK".</li>
+<li>The instrument used for each dimension, identified by number.</li>
+<li>The calibration status of that instrument.</li>
+<li>The ambient temperature at the time of measurement.</li>
+<li>The operator's name and the date.</li>
+<li>For critical features, form data: roundness, cylindricity, flatness, and where on the surface it was measured.</li>
+<li>Material certificate reference, tied to the heat or lot number of the stock.</li>
+<li>A clear accept / reject statement against the drawing revision, with the revision number printed on the report.</li>
+</ol>
+<p>If the report arrives without the drawing revision, treat it as a document about a part, not about your part.</p>
+
+<h2>ISO 2768-m and when to use it</h2>
+<p>ISO 2768 part 1 defines general tolerances for dimensions without individual tolerance indications. The "m" class is the medium grade, and for a part in the 30–120 mm size band it allows roughly ±0.3 mm on linear dimensions. That is generous — and appropriate — for features where nothing fits against them.</p>
+<p>Specifying a tight tolerance everywhere is a common and expensive mistake. It forces slower passes, more inspection, higher scrap and sometimes a different process. The rational approach is to tolerance the fits, the sealing faces, the bearing seats and the assembly interfaces, and let everything else follow ISO 2768-m. On a typical machined part that change alone can move the price by 20 to 40 percent.</p>
+
+<h2>Sampling, and what "full inspection" should mean</h2>
+<p>For a production run, inspection is usually defined by an acceptance sampling plan (ISO 2859-1 is the common reference), with an AQL level agreed in the purchase order. The plan states the lot size, the sample size and the acceptance number, so both sides know what happens when one part in the sample is out.</p>
+<p>"100% inspection" is a different commitment and it only means something if the inspection method can actually catch the defect. Measuring every part with a caliper on a ±0.005 mm dimension is 100% of nothing. Measuring every part with an air gauge on a bore is real 100% inspection.</p>
+
+<h2>Process capability, in one paragraph</h2>
+<p>If a process is centred and its natural spread is much narrower than the tolerance band, it will produce good parts even when the mean drifts a little. That ratio is Cp, and the version that accounts for the mean being off-centre is Cpk. A Cpk of 1.33 means the process spread is about three quarters of the tolerance band — a common minimum for production. Asking a supplier for Cpk on a critical dimension, rather than asking whether they can hold the tolerance, is the difference between a promise and evidence.</p>
+
+<h2>What we do here</h2>
+<p>Standard production tolerance at CHX Precision Metal is ±0.005 mm, tighter by agreement, with non-critical features following ISO 2768-m unless the drawing says otherwise. Inspection is by CMM, vision and air gauge depending on the feature, and first-article reports carry measured values, instrument identification and calibration status. Material certificates accompany each shipment; dimensional records are supplied with the goods.</p>
+<p>The plant runs 220 machines in Shajing, Bao'an District, Shenzhen — 100 machining centres (30 configured 3+2), 50 46-series CNC lathes and 70 Tsugami sliding-headstock lathes — with 5 million turned parts a month at capacity. Prototypes in 3–7 working days, production in 7–15, surface finishing 3–7. Minimum order one piece. Shipping is EXW Shenzhen, and we are happy to recommend reliable freight forwarders.</p>
+<p>We do not hold IATF 16949, AS9100 or ISO 13485. If your programme requires those certificates, we are not the right supplier, and saying so early saves both sides a month.</p>
+
+<h2>Related reading</h2>
+<ul>
+<li><a href="https://chxmetal.com/en/quality-control/">Quality control and inspection</a> — instruments and reports</li>
+<li><a href="https://chxmetal.com/en/cnc-machining-tolerance/">CNC machining tolerance explained</a></li>
+<li><a href="swiss-type.html">Swiss-type turning and the guide bushing</a></li>
+<li><a href="index.html">CNC machining FAQ index</a></li>
+</ul>
+
+<footer>
+<p>Shenzhen CHX Precision Metal Co., Ltd. (常合鑫精密五金) · Shajing, Bao'an District, Shenzhen, China<br>
+RFQ: <a href="https://chxmetal.com/en/contact/">chxmetal.com/en/contact</a> · <a href="https://chxmetal.com">chxmetal.com</a> · <a href="https://chx-metal.com">chx-metal.com</a> (中文)</p>
+</footer>
+</body>
+</html>
